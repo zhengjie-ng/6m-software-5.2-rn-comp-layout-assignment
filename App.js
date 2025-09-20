@@ -6,12 +6,12 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TextInput,
-  TouchableOpacity,
   Alert,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import RadioGroup from "react-native-radio-buttons-group";
 import { useMemo, useState } from "react";
+import Button from "./components/Button";
 
 export default function App() {
   const [name, setName] = useState("");
@@ -27,10 +27,8 @@ export default function App() {
       [
         {
           text: "OK",
-          onPress: () => console.log("OK Pressed"),
         },
-      ],
-      { cancelable: false } // Prevents dismissal by tapping outside
+      ]
     );
   };
 
@@ -86,9 +84,7 @@ export default function App() {
                   />
                 </View>
               </View>
-              <TouchableOpacity style={styles.button} onPress={showAlert}>
-                <Text style={styles.buttonText}>Submit</Text>
-              </TouchableOpacity>
+              <Button onPress={showAlert}>Submit</Button>
               <StatusBar style="auto" />
             </View>
           </ScrollView>
@@ -125,18 +121,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     width: 110,
-  },
-  button: {
-    borderColor: "black",
-    borderRadius: 2,
-    borderWidth: 1,
-    padding: 15,
-    backgroundColor: "white",
-    alignItems: "center",
-    margin: 12,
-    width: "90%",
-  },
-  buttonText: {
-    fontSize: 20,
   },
 });
